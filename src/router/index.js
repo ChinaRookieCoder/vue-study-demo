@@ -129,12 +129,6 @@ export const constantRoutes = [
         name: 'TestFlex',
         component: () => import('@/views/cssDemo/test-flex'),
         meta: { title: '练习flex(弹性)布局', icon: 'el-icon-apple', noCache: true }
-      },
-      {
-        path: 'testGrid',
-        name: 'TestGrid',
-        component: () => import('@/views/cssDemo/test-grid'),
-        meta: { title: '练习grid(网格)布局', icon: 'el-icon-apple', noCache: true }
       }
     ]
   },
