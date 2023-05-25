@@ -68,7 +68,7 @@ export default {
       },
       formRule: {
         value: [
-          { validator: _.debounce(validateValue, 3000), trigger: 'change' }
+          { validator: _.debounce(validateValue, 2000), trigger: 'change' }
         ]
       }
     }
