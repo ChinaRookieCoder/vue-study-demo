@@ -2,18 +2,19 @@
 <template>
   <div class="base-container">
     <h1>Lodash判断变量类型</h1>
+    <div style="width:20vw;margin: 10px auto"><el-input v-model="keywordSearch" placeholder="请输入关键字" @input="handleKeywordSearch" /></div>
     <div class="collapse-content">
       <el-collapse v-model="activeNames" @change="handleActiveChange">
-        <el-collapse-item name="stringType" title="判断String类型">
-          <el-tag type="danger">语法</el-tag>
-          <span class="content-main">_.isString(val)</span>
-          <el-tag type="warning">返参</el-tag>
-          <span class="content-main">Boolean(true/false)</span>
-          <el-tag type="info">用法</el-tag>
-          <span class="content-main-desc">
-            用于判断是否String类型
-          </span>
-        </el-collapse-item>
+        <div v-for="(item,index) in judgeTypeModelList" :key="index">
+          <el-collapse-item style="margin-bottom:10px" :name="item.collapseName" :title="item.collapseTitle">
+            <el-tag type="danger">语法</el-tag>
+            <span class="content-main">{{ item.grammar }}<label class="copy-style el-icon-copy-document" @click="copyGrammar(item.grammar)">Copy</label></span>
+            <el-tag type="warning">返参</el-tag>
+            <span class="content-main">{{ item.returnParam }}</span>
+            <el-tag type="info">用法</el-tag>
+            <span class="content-main-desc">{{ item.descrition }}</span>
+          </el-collapse-item>
+        </div>
       </el-collapse>
     </div>
   </div>
@@ -30,8 +31,12 @@ export default {
       activeNames: [],
       CONST: {
         STRING: 'string',
-        INTEGER: 'integer'
-      }
+        NUMBER: 'number',
+        ARRAY: 'array',
+        OBJECT: 'object'
+      },
+      keywordSearch: '',
+      judgeTypeModelList: []
     }
   },
   computed: {
@@ -41,25 +46,63 @@ export default {
 
   },
   created() {
-    console.log(this.judgeTypeList)
+    console.log('测试字符串类型', this.judgeVaribleType(this.CONST.STRING, '123124'))// 测试字符串类型
+    console.log('测试数值类型', this.judgeVaribleType(this.CONST.NUMBER, 1.12))// 测试数值类型
+    console.log('测试是否数组类型', this.judgeVaribleType(this.CONST.ARRAY, []))// 测试是否数组类型
+    console.log('测试是否Object类型', this.judgeVaribleType(this.CONST.OBJECT, {}))
   },
   mounted() {
+    this.judgeTypeModelList = _.cloneDeep(this.judgeTypeList)
   },
   methods: {
     handleActiveChange(val) {
       console.log(val)
     },
     judgeVaribleType(type, val) {
+      if (!val) return false
       switch (type) {
         case this.CONST.STRING:
           return _.isString(val)
+        case this.CONST.NUMBER:
+          return _.isNumber(val)
+        case this.CONST.ARRAY:
+          return _.isArray(val)
+        case this.CONST.OBJECT:
+          return _.isObject(val)
       }
     },
+    copyGrammar(grammar) {
+      this.$copyText(grammar).then(
+        success => {
+          this.messageSuccess('成功复制到剪切板')
+        },
+        failed => {
+          this.messageError('复制失败')
+        }
+      )
+    },
+    handleKeywordSearch: _.debounce(function(val) {
+      const fullDataArr = _.cloneDeep(this.judgeTypeList)
+      const arr = fullDataArr.filter(v => {
+        return v.collapseTitle.indexOf(val) !== -1
+      })
+      this.judgeTypeModelList = _.cloneDeep(arr)
+    }, 1000),
     messageSuccess(messageData) {
-      this.$message.success({ message: messageData, duration: 1000, showClose: true })
+      this.$notify({
+        title: messageData,
+        message: '',
+        type: 'success',
+        duration: 1000
+      })
     },
     messageError(messageData) {
-      this.$message.error({ message: messageData, duration: 1000, showClose: true })
+      this.$notify({
+        title: '失败',
+        message: messageData,
+        type: 'error',
+        duration: 1000
+      })
     },
     messageWarring(messageData) {
       this.$message.warning({ message: messageData, duration: 1000, showClose: true })
@@ -118,6 +161,16 @@ export default {
       font-weight: 700;
       font-size: 17px;
       color: #75c4dc;
+    }
+    .copy-style{
+      vertical-align: middle;
+      margin-left: 50px;
+      font-size: 18px;
+      // float: right;
+    }
+    .copy-style:hover{
+      cursor: pointer;
+      color: #ec6363;
     }
   }
   </style>
