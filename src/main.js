@@ -5,6 +5,8 @@ import router from './router'
 import ElementUI from 'element-ui'
 import locale from 'element-ui/lib/locale/lang/zh-CN' // lang i18n
 import VueclipBoard from 'vue-clipboard2'
+import Velocity from 'velocity-animate'
+import 'velocity-animate/velocity.ui.js'
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss' // global css
@@ -27,6 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
 Vue.use(VueclipBoard) // 复制到剪切板依赖
+Vue.prototype.Velocity = Velocity // 引用Velocity动画库
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 

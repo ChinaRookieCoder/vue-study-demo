@@ -31,10 +31,40 @@ const testDemoRouter = {
       meta: { title: '父子组件相互传参', icon: 'el-icon-user', noCache: true }
     },
     {
+      path: 'parentComponent',
+      name: 'ParentComponent',
+      component: () => import('@/views/testDemo/demo-component-param-plus/parentComponent'),
+      meta: { title: '父子组件传参(优化)', icon: 'el-icon-user', noCache: true }
+    },
+    {
       path: 'judgeType',
       name: 'JudgeType',
       component: () => import('@/views/testDemo/demo-judge-type'),
       meta: { title: '判断变量类型', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoVueFilter',
+      name: 'DemoVueFilter',
+      component: () => import('@/views/testDemo/demo-vue-filter'),
+      meta: { title: 'vue过滤器', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoJsCompont',
+      name: 'DemoJsCompont',
+      component: () => import('@/views/testDemo/demo-js-component'),
+      meta: { title: 'js封装vue组件', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoEmptyProp',
+      name: 'DemoEmptyProp',
+      component: () => import('@/views/testDemo/demo-empty-prop'),
+      meta: { title: 'js空属性设置为null', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoPayeeBank',
+      name: 'DemoPayeeBank',
+      component: () => import('@/views/testDemo/demo-payee-bank'),
+      meta: { title: '收款银行Demo', icon: 'el-icon-user', noCache: true }
     }
   ]
 }

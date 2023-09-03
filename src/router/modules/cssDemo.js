@@ -11,6 +11,12 @@ const cssDemoRouter = {
       name: 'TestFlex',
       component: () => import('@/views/cssDemo/test-flex'),
       meta: { title: '练习flex(弹性)布局', icon: 'el-icon-apple', noCache: true }
+    },
+    {
+      path: 'testAnimation',
+      name: 'TestAnimation',
+      component: () => import('@/views/cssDemo/test-animation'),
+      meta: { title: 'vue动画', icon: 'el-icon-apple', noCache: true }
     }
   ]
 }

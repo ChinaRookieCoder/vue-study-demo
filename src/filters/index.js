@@ -1,6 +1,6 @@
+import BigNumber from 'bignumber.js'
 // import parseTime, formatTime and set to filter
 export { parseTime, formatTime } from '@/utils'
-
 /**
  * Show plural label if time is plural number
  * @param {number} time
@@ -56,13 +56,53 @@ export function numberFormatter(num, digits) {
  * @param {number} num
  */
 export function toThousandFilter(num) {
-  return (+num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+  return (num || 0).toString().replace(/^-?\d+/g, m => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
 }
-
 /**
  * Upper case first char
  * @param {String} string
  */
 export function uppercaseFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+/**
+ * 设置千分位并保留小数位
+ * num: 需转化的数字
+ * needDot: 是否保留小数
+ * dotNum: 保留几位小数
+ * needRounding: 是否四舍五入
+ */
+export function toThousandAndDotFilter(num, needDot, dotNum, needRounding) {
+  let number = ''
+  if (needDot && !needRounding) {
+    // 保留小数,不四舍五入
+    number = changeTwoDecimal_f(num, dotNum)
+  } else if (needDot && needRounding) {
+    // 保留小数,四舍五入
+    number = new BigNumber(num).toFixed(dotNum)
+  }
+  // 千分位
+  number = toThousandFilter(number)
+  return number
+}
+
+function changeTwoDecimal_f(x, dotNum) {
+  var f_x = parseFloat(x)
+  if (isNaN(x)) {
+    return 0
+  }
+  const pow = new BigNumber(Math.pow(10, dotNum))
+  const x_info = new BigNumber(x)
+  f_x = new BigNumber(Math.floor(x_info.multipliedBy(pow).toNumber())).dividedBy(pow).toNumber()
+  var s_x = f_x.toString()
+  var pos_decimal = s_x.indexOf('.')
+  if (pos_decimal < 0) {
+    pos_decimal = s_x.length
+    s_x += '.'
+  }
+  while (s_x.length <= pos_decimal + dotNum) {
+    s_x += '0'
+  }
+  return s_x
 }

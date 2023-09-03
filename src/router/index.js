@@ -7,6 +7,7 @@ import redirectRouter from '@/router/modules/redirect'
 import dashboardRouter from '@/router/modules/dashboard'
 import userRouter from '@/router/modules/user'
 import loginRouter from '@/router/modules/login'
+import es6Router from '@/router/modules/es6'
 Vue.use(Router)
 
 export const constantRoutes = [
@@ -17,6 +18,7 @@ export const constantRoutes = [
   { ...testDemoRouter },
   { ...cssDemoRouter },
   { ...nestedRouter },
+  { ...es6Router },
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true },
   {

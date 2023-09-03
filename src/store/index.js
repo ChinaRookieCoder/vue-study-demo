@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import getters from './getters'
 import userInfo from '@/store/modules/userInfo'
 import judgeType from '@/store/modules/demo-judge-type'
+import demo from '@/store/modules/demo'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ const store = new Vuex.Store({
   modules: {
     ...modules,
     userInfo,
-    judgeType
+    judgeType,
+    demo
   },
   getters
 })
