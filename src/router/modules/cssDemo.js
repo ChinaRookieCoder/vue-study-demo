@@ -17,6 +17,12 @@ const cssDemoRouter = {
       name: 'TestAnimation',
       component: () => import('@/views/cssDemo/test-animation'),
       meta: { title: 'vue动画', icon: 'el-icon-apple', noCache: true }
+    },
+    {
+      path: 'testLayout',
+      name: 'TestLayout',
+      component: () => import('@/views/cssDemo/test-layout'),
+      meta: { title: 'el-row', icon: 'el-icon-apple', noCache: true }
     }
   ]
 }

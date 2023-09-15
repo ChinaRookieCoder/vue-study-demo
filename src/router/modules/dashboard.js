@@ -9,7 +9,7 @@ const dashboardRouter = {
     path: 'dashboard',
     name: 'Dashboard',
     component: () => import('@/views/dashboard/index'),
-    meta: { title: '主页', icon: 'el-icon-ship', affix: true }
+    meta: { title: '主页', icon: 'rabbit', affix: true }
   }]
 }
 

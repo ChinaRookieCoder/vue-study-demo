@@ -13,6 +13,9 @@ import '@/styles/index.scss' // global css
 import '@/icons' // icon
 import '@/permission' // permission control
 import * as filters from './filters' // global filters
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -30,6 +33,7 @@ if (process.env.NODE_ENV === 'production') {
 Vue.use(ElementUI, { locale })
 Vue.use(VueclipBoard) // 复制到剪切板依赖
 Vue.prototype.Velocity = Velocity // 引用Velocity动画库
+Vue.prototype.$moment = moment
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
 

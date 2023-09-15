@@ -65,6 +65,18 @@ const testDemoRouter = {
       name: 'DemoPayeeBank',
       component: () => import('@/views/testDemo/demo-payee-bank'),
       meta: { title: '收款银行Demo', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoLazyLoading',
+      name: 'DemoLazyLoading',
+      component: () => import('@/views/testDemo/demo-lazy-loading'),
+      meta: { title: '图片懒加载', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoCutImg',
+      name: 'DemoCutImg',
+      component: () => import('@/views/testDemo/demo-cut-img'),
+      meta: { title: '图片裁剪', icon: 'el-icon-user', noCache: true }
     }
   ]
 }
