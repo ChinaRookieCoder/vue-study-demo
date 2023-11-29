@@ -91,6 +91,7 @@ export default {
     handleFileSelect(event) {
       // 获取文件对象
       const file = event.target.files[0]
+      console.log(file)
       // 文件转blob
       // const blob = URL.createObjectURL(file)
       // blob转文件

@@ -26,10 +26,12 @@
     "normalize.css": "7.0.0",
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
+    "resize-observer-polyfill": "^1.5.1",
     "velocity-animate": "^1.5.2",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.3.3",
     "vue-code-highlight": "^0.7.8",
+    "vue-contenteditable": "^1.0.2",
     "vue-cropper": "^0.6.4",
     "vue-router": "3.5.4",
     "vuex": "^3.6.2"

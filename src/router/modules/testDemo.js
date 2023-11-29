@@ -77,6 +77,36 @@ const testDemoRouter = {
       name: 'DemoCutImg',
       component: () => import('@/views/testDemo/demo-cut-img'),
       meta: { title: '图片裁剪', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoDescDetail',
+      name: 'DemoDescDetail',
+      component: () => import('@/views/testDemo/demo-desc-detail'),
+      meta: { title: '文字过长自动提示', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoFetchXhr',
+      name: 'DemoFetchXhr',
+      component: () => import('@/views/testDemo/demo-fetch-xhr'),
+      meta: { title: 'fetch和xhr请求', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoEmoji',
+      name: 'DemoEmoji',
+      component: () => import('@/views/testDemo/demo-emoji'),
+      meta: { title: '表情', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoIframe',
+      name: 'DemoIframe',
+      component: () => import('@/views/testDemo/demo-iframe'),
+      meta: { title: 'iframe', icon: 'el-icon-user', noCache: true }
+    },
+    {
+      path: 'demoDirective',
+      name: 'DemoDirective',
+      component: () => import('@/views/testDemo/demo-directive'),
+      meta: { title: '自定义指令', icon: 'el-icon-user', noCache: true }
     }
   ]
 }

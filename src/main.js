@@ -59,6 +59,15 @@ Vue.config.productionTip = false
 //   console.log('进入了异步Promise全局异常。。。。。', typeof event.reason)
 //   console.log(event.reason)
 // }
+
+Vue.directive('autotip', {
+  inserted: (el, binding, vnode, oldVnode) => {
+    console.log('inserted', el, binding, vnode, oldVnode)
+  },
+  update: (el, binding, vnode, oldVnode) => {
+    console.log('update', el, binding, vnode, oldVnode)
+  }
+})
 new Vue({
   el: '#app',
   router,

@@ -23,7 +23,14 @@ const cssDemoRouter = {
       name: 'TestLayout',
       component: () => import('@/views/cssDemo/test-layout'),
       meta: { title: 'el-row', icon: 'el-icon-apple', noCache: true }
+    },
+    {
+      path: 'testCanvas',
+      name: 'TestCanvas',
+      component: () => import('@/views/cssDemo/test-canvas'),
+      meta: { title: 'Canvas', icon: 'el-icon-apple', noCache: true }
     }
+
   ]
 }
 
